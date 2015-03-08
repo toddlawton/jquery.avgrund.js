@@ -33,6 +33,7 @@
 			openOnEvent: true,
 			setEvent: 'click',
 			onLoad: false,
+			onReady: false,
 			onUnload: false,
 			template: '<p>This is test popin content!</p>'
 		};
@@ -106,6 +107,10 @@
 
 				body.bind('keyup', onDocumentKeyup)
 					.bind('click', onDocumentClick);
+
+				if (typeof options.onReady === 'function') {
+					options.onReady(self);
+				}
 			}
 
 			function deactivate () {
